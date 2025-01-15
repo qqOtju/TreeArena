@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea1bbd739f84a45b9e2dd1282cc21ec, type: 3}
+  m_Name: AoeAttackConfig
+  m_EditorClassIdentifier: 
+  _stat:
+    _damage: 15
+    _attackSpeed: 0.7
+    _piercing: 3
+    _bulletCount: 3
+    _bonusDamagePerLvl: 5
+    _bonusAttackSpeedPerLvl: -0.015
+    _bonusPiercingPerLvl: 1
+    _bonusBulletCountPerLvl: 1
+  _price:
+    _damagePrice: 15
+    _attackSpeedPrice: 15
+    _piercingPrice: 15
+    _bulletCountPrice: 15
+    _damagePricePerLvl: 15
+    _attackSpeedPricePerLvl: 15
+    _piercingPricePerLvl: 15
+    _bulletCountPricePerLvl: 15

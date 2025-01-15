@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c50ab34ed54c5baf17ce2ce0122294, type: 3}
+  m_Name: SingleAttackConfig
+  m_EditorClassIdentifier: 
+  _stat:
+    _damage: 50
+    _attackSpeed: 1
+    _criticalChance: 5
+    _criticalDamage: 200
+    _bonusDamagePerLvl: 15
+    _bonusAttackSpeedPerLvl: -0.025
+    _bonusCriticalChancePerLvl: 3
+    _bonusCriticalDamagePerLvl: 5
+  _price:
+    _damagePrice: 15
+    _attackSpeedPrice: 15
+    _criticalChancePrice: 15
+    _criticalDamagePrice: 15
+    _damagePricePerLvl: 15
+    _attackSpeedPricePerLvl: 15
+    _criticalChancePricePerLvl: 15
+    _criticalDamagePricePerLvl: 15
