@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Config;
+﻿using Project.Scripts.Audio;
+using Project.Scripts.Config;
 using Project.Scripts.GameLogic.Entity;
 using Project.Scripts.GameLogic.Wave;
 using Project.Scripts.Module.System;
@@ -11,15 +12,18 @@ namespace Project.Scripts.GameLogic
     public class Tree: EntityBase<Tree>
     {
         [SerializeField] private WavesController _wavesController;
+        [SerializeField] private AudioClip[] _damageSounds;
         
         private TreeUpgradeSystem _upgradeSystem;
+        private AudioController _audioController;
         private bool _bonusHeal;
         private TreeStat _stat;
             
         [Inject]
-        private void Construct(TreeUpgradeSystem upgradeSystem)
+        private void Construct(TreeUpgradeSystem upgradeSystem, AudioController audioController)
         {
             _upgradeSystem = upgradeSystem;
+            _audioController = audioController;
         }
 
         private void Awake()
@@ -70,6 +74,7 @@ namespace Project.Scripts.GameLogic
 
         public override void TakeDamage(float dmg)
         {
+            PlaySound();
             var chance = Random.Range(0, 100);
             if (chance < _stat.Resistance)
                 dmg = 1;
@@ -77,6 +82,12 @@ namespace Project.Scripts.GameLogic
             if(dmg <= 0)
                 dmg = 1;
             CurrentHealth -= dmg;
+        }
+
+        private void PlaySound()
+        {
+            var clip = _damageSounds[Random.Range(0, _damageSounds.Length)];
+            _audioController.PlaySFX(clip);
         }
     }
 }

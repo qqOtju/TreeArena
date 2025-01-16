@@ -1,4 +1,6 @@
-﻿using Project.Scripts.Config;
+﻿using System;
+using Project.Scripts.Audio;
+using Project.Scripts.Config;
 using Project.Scripts.GameLogic.Character.Attack;
 using Project.Scripts.GameLogic.Enemy;
 using Project.Scripts.GameLogic.Entity;
@@ -8,6 +10,7 @@ using Project.Scripts.Module.System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.GameLogic.Character
 {
@@ -23,8 +26,11 @@ namespace Project.Scripts.GameLogic.Character
         [PreviewField(50, ObjectFieldAlignment.Left)]
         [SerializeField] private Sprite[] _animationSprites;
         [SerializeField] private Transform _visual;
+        [SerializeField] private Transform _particle;
         [Title("References")]
         [SerializeField] private WavesController _wavesController;
+        [Title("Audio")]
+        [SerializeField] private AudioClip[] _attackSounds;
         [Title("Values")]
         [ShowInInspector] private const float AnimationTime = 0.4f;
         
@@ -32,6 +38,7 @@ namespace Project.Scripts.GameLogic.Character
         private const float RotationSpeed = 2f;
         
         private WeaponUpgradeSystem _weaponUpgradeSystem;
+        private AudioController _audioController;
         private IHealth<EnemyBase> _currentTarget;
         private float _muzzleRotationVelocity;
         private BulletFactory _bulletFactory;
@@ -50,10 +57,11 @@ namespace Project.Scripts.GameLogic.Character
 
         [Inject]
         private void Construct(BulletFactory bulletFactory, 
-            WeaponUpgradeSystem weaponUpgradeSystem)
+            WeaponUpgradeSystem weaponUpgradeSystem, AudioController audioController)
         {
             _bulletFactory = bulletFactory;    
             _weaponUpgradeSystem = weaponUpgradeSystem;
+            _audioController = audioController;
         }
 
         private void Awake()
@@ -73,6 +81,8 @@ namespace Project.Scripts.GameLogic.Character
             _aoeAttack = new AOEAttack(_bulletFactory, _muzzle, 
                 _weaponUpgradeSystem.CurrentAoeAttackStat);
             _currentAttack = _singleAttack;
+            _aoeAttack.OnAttack += PlayAttackSound;
+            _singleAttack.OnAttack += PlayAttackSound;
         }
 
         private void FixedUpdate()
@@ -86,8 +96,11 @@ namespace Project.Scripts.GameLogic.Character
         {
             if (_isAttacking)
                 _currentAttack.Update();
-            if (_visual != null)
+            if (_visual != null && _particle != null)
+            {
                 _visual.rotation = Quaternion.identity;
+                _particle.rotation = Quaternion.identity;
+            }
             if(Input.GetKeyDown(KeyCode.Z))
                 _currentAttack = _singleAttack;
             else if(Input.GetKeyDown(KeyCode.X))
@@ -97,6 +110,16 @@ namespace Project.Scripts.GameLogic.Character
             else if(_moveDirection.x < 0)
                 _visual.localScale = new Vector3(-1, 1, 1);
             AnimationCycle();
+        }
+
+        private void OnDestroy()
+        {
+            _aoeAttack.OnAttack -= PlayAttackSound;
+            _singleAttack.OnAttack -= PlayAttackSound;
+            _weaponUpgradeSystem.OnSingleAttackStatChanged -= OnSingleAttackStatChanged;
+            _weaponUpgradeSystem.OnAoeAttackStatChanged -= OnAoeAttackStatChanged;
+            _wavesController.OnWaveStart -= OnWaveStart;
+            _wavesController.OnWaveEnd -= OnWaveEnd;
         }
 
         private void OnWaveStart(int obj)
@@ -163,6 +186,12 @@ namespace Project.Scripts.GameLogic.Character
                     _animationDirection = true;
                 _spriteRenderer.sprite = _animationSprites[_animationIndex];
             }
+        }
+
+        private void PlayAttackSound()
+        {
+            var clip = _attackSounds[Random.Range(0, _attackSounds.Length)];
+            _audioController.PlaySFX(clip);
         }
         
         public void SetTarget(IHealth<EnemyBase> target)

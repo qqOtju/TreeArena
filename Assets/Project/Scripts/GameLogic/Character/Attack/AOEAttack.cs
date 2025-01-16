@@ -29,6 +29,7 @@ namespace Project.Scripts.GameLogic.Character.Attack
                 bullet.transform.rotation = Quaternion.Euler(
                     new Vector3(0,0, _muzzle.localRotation.eulerAngles.z + i * angle));
             }
+            RaiseOnAttack();
         }
         
         protected override float GetDamage() => _aoeAttackStat.Damage;

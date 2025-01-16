@@ -1,4 +1,5 @@
-﻿using Project.Scripts.GameLogic.Enemy;
+﻿using System;
+using Project.Scripts.GameLogic.Enemy;
 using Project.Scripts.GameLogic.Entity;
 using Project.Scripts.Module.Factory;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Project.Scripts.GameLogic.Character.Attack
         protected float AttackSpeed => GetAttackSpeed();
         protected int Piercing => GetPiercing();
         protected float BulletSpeed => GetBulletSpeed();
+        
+        public event Action OnAttack;
         
         public WispAttack(BulletFactory bulletFactory, Transform muzzle)
         {
@@ -40,6 +43,7 @@ namespace Project.Scripts.GameLogic.Character.Attack
             var bullet = _bulletFactory.Create();
             bullet.transform.rotation = Quaternion.Euler(
                 new Vector3(0,0, _muzzle.localRotation.eulerAngles.z));
+            OnAttack?.Invoke();
         }
 
         protected virtual void OnHealthHit(Bullet bullet, IHealth<EnemyBase> health)
@@ -65,6 +69,11 @@ namespace Project.Scripts.GameLogic.Character.Attack
             var rb = bullet.Rb;
             var moveForce = tr.position + tr.right / 5;
             rb.MovePosition(moveForce);
+        }
+        
+        protected void RaiseOnAttack()
+        {
+            OnAttack?.Invoke();
         }
         
         protected abstract float GetDamage();

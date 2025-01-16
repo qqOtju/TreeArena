@@ -1,7 +1,9 @@
-﻿using Project.Scripts.GameLogic.Enemy;
+﻿using Project.Scripts.Audio;
+using Project.Scripts.GameLogic.Enemy;
 using Project.Scripts.GameLogic.Entity;
 using Project.Scripts.Module.Spawner;
 using UnityEngine;
+using Zenject;
 using Tree = Project.Scripts.GameLogic.Tree;
 
 namespace Project.Scripts.Module.Effects
@@ -10,10 +12,18 @@ namespace Project.Scripts.Module.Effects
     {
         [SerializeField] private ParticleSystem _damageEffect;
         [SerializeField] private ParticleSystem _dealDamageEffect;
+        [SerializeField] private AudioClip[] _damageSounds;
         [SerializeField] private EnemySpawner _enemySpawner;
 
         private ParticleSystem _effect;
         private ParticleSystem _dealEffect;
+        private AudioController _audioController;
+
+        [Inject]
+        private void Construct(AudioController audioController)
+        {
+            _audioController = audioController;
+        }
         
         private void Awake()
         {
@@ -51,6 +61,8 @@ namespace Project.Scripts.Module.Effects
             _effect.transform.position = obj.Object.transform.position;
             var effectMain = _effect.main;
             effectMain.startColor = obj.Object.Color;
+            var randomClip = _damageSounds[Random.Range(0, _damageSounds.Length)];
+            _audioController.PlaySFX(randomClip);
             _effect.Play();
         }
 

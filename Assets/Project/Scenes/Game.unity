@@ -96773,6 +96773,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pickUpEffect: {fileID: 7571904538289782164, guid: 66c7f314c725720469574e7797e73894, type: 3}
+  _pickUpSounds:
+  - {fileID: 8300000, guid: 82e4534cb0fc59d4fac9df342df6c442, type: 3}
+  - {fileID: 8300000, guid: 3d45f10633ecfba4286e029b9b2051dc, type: 3}
   _coinSpawner: {fileID: 1193577478}
 --- !u!70 &2012463339 stripped
 CapsuleCollider2D:

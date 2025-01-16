@@ -44,6 +44,7 @@ namespace Project.Scripts.GameLogic.Character.Attack
             }
             bullet.transform.rotation = Quaternion.Euler(
                 new Vector3(0,0, _muzzle.localRotation.eulerAngles.z));
+            RaiseOnAttack();
         }
 
         protected override void OnHealthHit(Bullet bullet, IHealth<EnemyBase> health)

@@ -1,4 +1,5 @@
-﻿using Project.Scripts.GameLogic.Entity;
+﻿using Project.Scripts.Audio;
+using Project.Scripts.GameLogic.Entity;
 using Project.Scripts.GameLogic.Wave;
 using Project.Scripts.Module.System;
 using TMPro;
@@ -20,14 +21,16 @@ namespace Project.Scripts.UI.Game
         [SerializeField] private Button _pauseButton;
         [SerializeField] private Canvas _pauseMenu;
         
+        private AudioController _audioController;
         private CoinSystem _coinSystem;
         private Tree _tree;
         
         [Inject]    
-        private void Construct(Tree tree, CoinSystem coinSystem)
+        private void Construct(Tree tree, CoinSystem coinSystem, AudioController audioController)
         {
             _tree = tree;
             _coinSystem = coinSystem;
+            _audioController = audioController;
         }
 
         private void Awake()
@@ -42,6 +45,7 @@ namespace Project.Scripts.UI.Game
 
         private void Start()
         {
+            _audioController.PlayMusic();
             _showShopButton.gameObject.SetActive(false);
             _healthBar.value = 1;
             _healthText.text = $"{_tree.CurrentHealth}/{_tree.MaxHealth}";
