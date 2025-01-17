@@ -1,4 +1,5 @@
 ﻿using System;
+using Project.Scripts.Audio;
 using Project.Scripts.Config;
 using Project.Scripts.Module.System;
 using Sirenix.OdinInspector;
@@ -41,8 +42,9 @@ namespace Project.Scripts.UI.Game
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _hideButton;
         [SerializeField] private TMP_Text _coinsText;
-        
+
         private WeaponUpgradeSystem _weaponUpgradeSystem;
+        private AudioController _audioController;
         private CoinSystem _coinSystem;
         private Canvas _canvas;
         
@@ -50,9 +52,10 @@ namespace Project.Scripts.UI.Game
         
         [Inject]
         private void Construct(WeaponUpgradeSystem weaponUpgradeSystem, 
-            CoinSystem coinSystem)
+            CoinSystem coinSystem, AudioController audioController)
         {
             _weaponUpgradeSystem = weaponUpgradeSystem;
+            _audioController = audioController;
             _coinSystem = coinSystem;
         }
         
@@ -89,11 +92,12 @@ namespace Project.Scripts.UI.Game
 
         private void UpdateCoins(int obj)
         {
-            _coinsText.text = $"{obj}";
+            _coinsText.text = $"{obj} g";
         }
 
         private void OpenSingleWeaponMenu()
         {
+            _audioController.PlayButtonClick();
             _weaponUpgradeSystem.OnAoeAttackStatChanged -= UpdateAoeWeaponStats;
             _weaponUpgradeSystem.OnSingleAttackStatChanged += UpdateSingleWeaponStats;
             UpdateSingleWeaponStats(_weaponUpgradeSystem.CurrentSingleAttackStat);
@@ -102,6 +106,7 @@ namespace Project.Scripts.UI.Game
         
         private void OpenAoeWeaponMenu()
         {
+            _audioController.PlayButtonClick();
             _weaponUpgradeSystem.OnSingleAttackStatChanged -= UpdateSingleWeaponStats;
             _weaponUpgradeSystem.OnAoeAttackStatChanged += UpdateAoeWeaponStats;
             UpdateAoeWeaponStats(_weaponUpgradeSystem.CurrentAoeAttackStat);
@@ -204,6 +209,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeSingleDamage()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentSingleAttackPrice.DamagePrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentSingleAttackPrice.DamagePrice;
             _weaponUpgradeSystem.UpgradeSingleDamage();
@@ -212,6 +218,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeSingleAttackSpeed()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentSingleAttackPrice.AttackSpeedPrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentSingleAttackPrice.AttackSpeedPrice;
             _weaponUpgradeSystem.UpgradeSingleAttackSpeed();
@@ -220,6 +227,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeSingleCriticalChance()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentSingleAttackPrice.CriticalChancePrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentSingleAttackPrice.CriticalChancePrice;
             _weaponUpgradeSystem.UpgradeCriticalChance();
@@ -228,6 +236,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeSingleCriticalDamage()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentSingleAttackPrice.CriticalDamagePrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentSingleAttackPrice.CriticalDamagePrice;
             _weaponUpgradeSystem.UpgradeCriticalDamage();
@@ -236,6 +245,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeAoeDamage()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentAoeAttackPrice.DamagePrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentAoeAttackPrice.DamagePrice;
             _weaponUpgradeSystem.UpgradeAoeDamage();
@@ -244,6 +254,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeAoeAttackSpeed()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentAoeAttackPrice.AttackSpeedPrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentAoeAttackPrice.AttackSpeedPrice;
             _weaponUpgradeSystem.UpgradeAoeAttackSpeed();
@@ -252,6 +263,7 @@ namespace Project.Scripts.UI.Game
         
         private void UpgradeAoePiercing()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentAoeAttackPrice.PiercingPrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentAoeAttackPrice.PiercingPrice;
             _weaponUpgradeSystem.UpgradePiercing();
@@ -260,6 +272,7 @@ namespace Project.Scripts.UI.Game
 
         private void UpgradeAoeBulletCount()
         {
+            _audioController.PlayButtonClick();
             if(_coinSystem.CurrentGold < _weaponUpgradeSystem.CurrentAoeAttackPrice.BulletCountPrice) return;
             _coinSystem.CurrentGold -= _weaponUpgradeSystem.CurrentAoeAttackPrice.BulletCountPrice;
             _weaponUpgradeSystem.UpgradeBulletCount();
@@ -268,17 +281,20 @@ namespace Project.Scripts.UI.Game
         
         private void Close()
         {
+            _audioController.PlayButtonClick();
             _canvas.enabled = false;
             OnClose?.Invoke();
         }
 
         private void Hide()
         {
+            _audioController.PlayButtonClick();
             _canvas.enabled = false;
         }
 
         public void Open()
         {
+            _audioController.PlayButtonClick();
             _canvas.enabled = true;
         }
     }

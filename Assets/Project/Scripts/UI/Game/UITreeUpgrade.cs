@@ -1,4 +1,5 @@
 ﻿using System;
+using Project.Scripts.Audio;
 using Project.Scripts.Config;
 using Project.Scripts.GameLogic.Wave;
 using Project.Scripts.Module.System;
@@ -29,16 +30,18 @@ namespace Project.Scripts.UI.Game
         [SerializeField] private Button _resistanceButton;
         [Header("Other")]
         [SerializeField] private WavesController _wavesController;
-        
+
         private TreeUpgradeSystem _treeUpgradeSystem;
+        private AudioController _audioController;
         private Canvas _canvas;
         
         public event Action OnClose; 
 
         [Inject]
-        private void Construct(TreeUpgradeSystem treeUpgradeSystem)
+        private void Construct(TreeUpgradeSystem treeUpgradeSystem, AudioController audioController)
         {
             _treeUpgradeSystem = treeUpgradeSystem;
+            _audioController = audioController;
         }
         
         private void Awake()
@@ -68,10 +71,10 @@ namespace Project.Scripts.UI.Game
             _regenText.text = $"{obj.Regen}";
             _armorText.text = $"{obj.Armor}";
             _resistanceText.text = $"{obj.Resistance}";  
-            _maxHealthUpgradeValue.text = $"+{obj.BonusMaxHealthPerLvl} Max Health";
-            _regenUpgradeValue.text = $"+{obj.BonusRegenPerLvl} Regen";
-            _armorUpgradeValue.text = $"+{obj.BonusArmorPerLvl} Armor";
-            _resistanceUpgradeValue.text = $"{obj.BonusResistancePerLvl} Resistance";
+            _maxHealthUpgradeValue.text = $"Health +{obj.BonusMaxHealthPerLvl}";
+            _regenUpgradeValue.text = $"Regen +{obj.BonusRegenPerLvl}";
+            _armorUpgradeValue.text = $"Armor +{obj.BonusArmorPerLvl}";
+            _resistanceUpgradeValue.text = $"Resist +{obj.BonusResistancePerLvl}";
         }
         
         private void Close()
@@ -87,24 +90,28 @@ namespace Project.Scripts.UI.Game
 
         private void UpgradeMaxHealth()
         {
+            _audioController.PlayButtonClick();
             _treeUpgradeSystem.UpgradeMaxHealth();
             Close();
         }
 
         private void UpgradeRegen()
         {
+            _audioController.PlayButtonClick();
             _treeUpgradeSystem.UpgradeRegen();
             Close();
         }
 
         private void UpgradeArmor()
         {
+            _audioController.PlayButtonClick();
             _treeUpgradeSystem.UpgradeArmor();
             Close();    
         }
 
         private void UpgradeResistance()
         {
+            _audioController.PlayButtonClick();
             _treeUpgradeSystem.UpgradeResistance();
             Close();
         }

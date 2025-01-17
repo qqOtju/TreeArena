@@ -35461,6 +35461,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageEffect: {fileID: 7571904538289782164, guid: db510827a20f66141b022ec8beb19cdd, type: 3}
   _dealDamageEffect: {fileID: 7571904538289782164, guid: aef4f69b659a34d479f363ff0534dd8b, type: 3}
+  _damageSounds:
+  - {fileID: 8300000, guid: d1aa9598997c6ce4c89cee9cdfa46caa, type: 3}
+  - {fileID: 8300000, guid: 903a467b70da2414d806b6914fb3c4d7, type: 3}
+  - {fileID: 8300000, guid: 19776318dcd5e8045af278c93d875a14, type: 3}
+  - {fileID: 8300000, guid: 14a18cb9a5f2f494586b62adc180edf8, type: 3}
+  - {fileID: 8300000, guid: 463fc5f1b1c78224081bb4d2a18a3db2, type: 3}
   _enemySpawner: {fileID: 801006590}
 --- !u!1001 &554568607
 PrefabInstance:

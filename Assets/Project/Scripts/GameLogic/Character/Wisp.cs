@@ -7,6 +7,7 @@ using Project.Scripts.GameLogic.Entity;
 using Project.Scripts.GameLogic.Wave;
 using Project.Scripts.Module.Factory;
 using Project.Scripts.Module.System;
+using Project.Scripts.UI.Game;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -29,6 +30,7 @@ namespace Project.Scripts.GameLogic.Character
         [SerializeField] private Transform _particle;
         [Title("References")]
         [SerializeField] private WavesController _wavesController;
+        [SerializeField] private UIGame _uiGame;
         [Title("Audio")]
         [SerializeField] private AudioClip[] _attackSounds;
         [Title("Values")]
@@ -66,6 +68,8 @@ namespace Project.Scripts.GameLogic.Character
 
         private void Awake()
         {
+            _uiGame.OnAoeAttack += SetAoeAttack;
+            _uiGame.OnSingleAttack += SetSingleAttack;
             _weaponUpgradeSystem.OnSingleAttackStatChanged += OnSingleAttackStatChanged;
             _weaponUpgradeSystem.OnAoeAttackStatChanged += OnAoeAttackStatChanged;
             _wavesController.OnWaveStart += OnWaveStart;
@@ -120,6 +124,18 @@ namespace Project.Scripts.GameLogic.Character
             _weaponUpgradeSystem.OnAoeAttackStatChanged -= OnAoeAttackStatChanged;
             _wavesController.OnWaveStart -= OnWaveStart;
             _wavesController.OnWaveEnd -= OnWaveEnd;
+            _uiGame.OnAoeAttack -= SetAoeAttack;
+            _uiGame.OnSingleAttack -= SetSingleAttack;
+        }
+
+        private void SetSingleAttack()
+        {
+            _currentAttack = _singleAttack;
+        }
+
+        private void SetAoeAttack()
+        {
+            _currentAttack = _aoeAttack;
         }
 
         private void OnWaveStart(int obj)

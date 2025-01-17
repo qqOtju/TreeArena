@@ -19,7 +19,7 @@ namespace Project.Scripts.UI.Game
         {
             _nameText.text = upgradeName;
             _valueText.text = value;
-            _priceText.text = price;
+            _priceText.text = $"{price} g";
             _icon.sprite = icon;
         }
     }

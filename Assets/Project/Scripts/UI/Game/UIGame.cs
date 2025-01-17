@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Audio;
+﻿using System;
+using Project.Scripts.Audio;
 using Project.Scripts.GameLogic.Entity;
 using Project.Scripts.GameLogic.Wave;
 using Project.Scripts.Module.System;
@@ -19,12 +20,17 @@ namespace Project.Scripts.UI.Game
         [SerializeField] private UIWeaponUpgradeMenu _weaponUpgradeMenu;
         [SerializeField] private WavesController _wavesController;
         [SerializeField] private Button _pauseButton;
+        [SerializeField] private Button _aoeButton;
+        [SerializeField] private Button _singleButton;
         [SerializeField] private Canvas _pauseMenu;
         
         private AudioController _audioController;
         private CoinSystem _coinSystem;
         private Tree _tree;
         
+        public event Action OnAoeAttack;
+        public event Action OnSingleAttack; 
+
         [Inject]    
         private void Construct(Tree tree, CoinSystem coinSystem, AudioController audioController)
         {
@@ -41,6 +47,8 @@ namespace Project.Scripts.UI.Game
             _wavesController.OnWaveStart += OnWaveStart;
             _showShopButton.onClick.AddListener(ShowShop);
             _pauseButton.onClick.AddListener(Pause);
+            _aoeButton.onClick.AddListener(SetAoeAttack);
+            _singleButton.onClick.AddListener(SetSingleAttack);
         }
 
         private void Start()
@@ -49,17 +57,24 @@ namespace Project.Scripts.UI.Game
             _showShopButton.gameObject.SetActive(false);
             _healthBar.value = 1;
             _healthText.text = $"{_tree.CurrentHealth}/{_tree.MaxHealth}";
-            _goldText.text = $"{_coinSystem.CurrentGold} G";
+            OnGoldChanged(_coinSystem.CurrentGold);
         }
 
         private void OnDestroy()
         {
             _tree.OnHealthChange -= OnHealthChange;
             _coinSystem.OnGoldChanged -= OnGoldChanged;
+            _wavesController.OnWaveEnd -= OnWaveEnd;
+            _wavesController.OnWaveStart -= OnWaveStart;
+            _showShopButton.onClick.RemoveListener(ShowShop);
+            _pauseButton.onClick.RemoveListener(Pause);
+            _aoeButton.onClick.RemoveListener(SetAoeAttack);
+            _singleButton.onClick.RemoveListener(SetSingleAttack);
         }
 
         private void Pause()
         {
+            _audioController.PlayButtonClick();
             Time.timeScale = 0;
             _pauseMenu.enabled = true;
         }
@@ -72,7 +87,7 @@ namespace Project.Scripts.UI.Game
 
         private void OnGoldChanged(int obj)
         {
-            _goldText.text = $"{obj} G";
+            _goldText.text = $"{obj} g";
         }
 
         private void OnWaveStart(int obj)
@@ -87,7 +102,20 @@ namespace Project.Scripts.UI.Game
 
         private void ShowShop()
         {
+            _audioController.PlayButtonClick();
             _weaponUpgradeMenu.Open();
+        }
+
+        private void SetAoeAttack()
+        {
+            _audioController.PlayButtonClick();
+            OnAoeAttack?.Invoke();
+        }
+        
+        private void SetSingleAttack()
+        {
+            _audioController.PlayButtonClick();
+            OnSingleAttack?.Invoke();
         }
     }
 }
