@@ -34,6 +34,8 @@ namespace Project.Scripts.Module.Effects
         private void OnDestroy()
         {
             _coinSpawner.OnCoinSpawn -= OnCoinSpawn;
+            _effect.Clear();
+            Destroy(_effect.gameObject);
         }
 
         private void OnCoinSpawn(Coin obj)

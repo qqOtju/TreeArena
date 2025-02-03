@@ -14,17 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawns:
   - _spawnPoint: 0
-    _enemyType: 0
-    _enemyCount: 6
-    _spawnDelay: 0.3
-    _waveDelay: 0
-  - _spawnPoint: 2
-    _enemyType: 0
-    _enemyCount: 6
-    _spawnDelay: 0.3
+    _enemyType: 1
+    _enemyCount: 3
+    _spawnDelay: 0.25
     _waveDelay: 0
   - _spawnPoint: 4
-    _enemyType: 0
-    _enemyCount: 6
-    _spawnDelay: 0.3
+    _enemyType: 1
+    _enemyCount: 3
+    _spawnDelay: 0
     _waveDelay: 0
+  - _spawnPoint: 3
+    _enemyType: 0
+    _enemyCount: 2
+    _spawnDelay: 0
+    _waveDelay: 1.5
+  - _spawnPoint: 1
+    _enemyType: 0
+    _enemyCount: 2
+    _spawnDelay: 0
+    _waveDelay: 1.5
+  - _spawnPoint: 0
+    _enemyType: 2
+    _enemyCount: 1
+    _spawnDelay: 0
+    _waveDelay: 2.5
+  - _spawnPoint: 4
+    _enemyType: 2
+    _enemyCount: 1
+    _spawnDelay: 0
+    _waveDelay: 2.5

@@ -15,9 +15,9 @@ namespace Project.Scripts.UI.Game
         public Button UpgradeButton => _upgradeButton;
         
         public void Initialize(string upgradeName, string value, 
-            string price, Sprite icon)
+            string price, Sprite icon, int lvl)
         {
-            _nameText.text = upgradeName;
+            _nameText.text = $"{upgradeName}";
             _valueText.text = value;
             _priceText.text = $"{price} g";
             _icon.sprite = icon;

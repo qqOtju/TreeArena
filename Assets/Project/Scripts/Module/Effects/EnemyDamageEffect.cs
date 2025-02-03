@@ -41,6 +41,8 @@ namespace Project.Scripts.Module.Effects
         {
             _enemySpawner.OnEnemySpawn -= OnEnemySpawn;
             _enemySpawner.OnEnemyDeath -= OnEnemyDeath;
+            _effect.Clear();
+            Destroy(_effect.gameObject);
         }
 
         private void OnEnemySpawn(EnemyBase obj)
@@ -70,8 +72,9 @@ namespace Project.Scripts.Module.Effects
         {
             var range = 0.5f;
             var offset = new Vector3(0, -3f);
-            _dealEffect.transform.position = tree.Object.transform.position + offset +
-                                             new Vector3(Random.Range(-range, range), Random.Range(range, range), 0);
+            _dealEffect.transform.position = 
+                tree.Object.transform.position + offset + 
+                new Vector3(Random.Range(-range, range), Random.Range(range, range), 0);
             var effectMain = _dealEffect.main;
             effectMain.startColor = enemy.Color;
             _dealEffect.Play();

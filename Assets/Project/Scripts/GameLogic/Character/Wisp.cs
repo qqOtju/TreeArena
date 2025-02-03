@@ -88,13 +88,6 @@ namespace Project.Scripts.GameLogic.Character
             _aoeAttack.OnAttack += PlayAttackSound;
             _singleAttack.OnAttack += PlayAttackSound;
         }
-
-        private void FixedUpdate()
-        {
-            Rotate();
-            Move();
-            RotateMuzzle();
-        }
         
         private void Update()
         {
@@ -105,15 +98,18 @@ namespace Project.Scripts.GameLogic.Character
                 _visual.rotation = Quaternion.identity;
                 _particle.rotation = Quaternion.identity;
             }
-            if(Input.GetKeyDown(KeyCode.Z))
-                _currentAttack = _singleAttack;
-            else if(Input.GetKeyDown(KeyCode.X))
-                _currentAttack = _aoeAttack;
             if(_moveDirection.x > 0)
                 _visual.localScale = new Vector3(1, 1, 1);
             else if(_moveDirection.x < 0)
                 _visual.localScale = new Vector3(-1, 1, 1);
             AnimationCycle();
+        }
+
+        private void FixedUpdate()
+        {
+            Rotate();
+            Move();
+            RotateMuzzle();
         }
 
         private void OnDestroy()

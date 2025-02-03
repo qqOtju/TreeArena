@@ -33,7 +33,7 @@ namespace Project.Scripts.UI.Menu
         private void StartGame()
         {
             _audioController.PlayButtonClick();
-            SceneManager.LoadScene(2, LoadSceneMode.Single);
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
 
         private void ToggleOptions()

@@ -39,19 +39,19 @@ namespace Project.Scripts.GameLogic
             _stat = _upgradeSystem.CurrentTreeStat;
         }
 
-        private void OnDestroy()
-        {
-            _upgradeSystem.OnTreeStatChanged -= SetStat;
-            _wavesController.OnWaveStart -= OnWaveStart;
-            _wavesController.OnWaveEnd -= OnWaveEnd;
-        }
-
         private void Update()
         {
             if (CurrentHealth < MaxHealth && !_bonusHeal)
                 Heal(_stat.Regen * Time.deltaTime);
             else if(CurrentHealth < MaxHealth && _bonusHeal)
                 Heal(500 * Time.deltaTime);
+        }
+
+        private void OnDestroy()
+        {
+            _upgradeSystem.OnTreeStatChanged -= SetStat;
+            _wavesController.OnWaveStart -= OnWaveStart;
+            _wavesController.OnWaveEnd -= OnWaveEnd;
         }
 
         private void OnWaveEnd(int obj)

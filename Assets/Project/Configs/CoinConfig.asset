@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CoinConfig
   m_EditorClassIdentifier: 
   _coinStat:
-    _value: 10
+    _value: 5
     _pickupRange: 1
-    _bonusValuePerWave: 2
+    _bonusValuePerWave: 1

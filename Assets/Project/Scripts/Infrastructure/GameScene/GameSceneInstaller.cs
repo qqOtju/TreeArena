@@ -46,7 +46,7 @@ namespace Project.Scripts.Infrastructure.GameScene
         [SerializeField] private SingleAttackConfig _singleAttackConfig;
         [SerializeField] private AoeAttackConfig _aoeAttackConfig;
 
-        private const int InitialGold = 100;
+        private const int InitialGold = 0;
 
         public override void InstallBindings()
         {

@@ -33,7 +33,7 @@ namespace Project.Scripts.GameLogic
 
         private void Update()
         {
-            if (_updateIteration == 10)
+            if (_updateIteration == 20)
             {
                 _updateIteration = 0;
                 SetTarget();

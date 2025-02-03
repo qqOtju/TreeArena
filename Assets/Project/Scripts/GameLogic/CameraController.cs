@@ -29,6 +29,8 @@ namespace Project.Scripts.GameLogic
         {
             _volume.profile.TryGet(out ColorAdjustments colorAdjustments);
             _colorAdjustments = colorAdjustments;
+            Resources.UnloadUnusedAssets();
+            System.GC.Collect();
         }
 
         private void OnHealthChange(OnHealthChangeArgs<Tree> obj)

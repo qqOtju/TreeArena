@@ -1368,8 +1368,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1487,7 +1487,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -5043,6 +5043,7 @@ MonoBehaviour:
   _visual: {fileID: 1239859049343966686}
   _particle: {fileID: 8848808828505641239}
   _wavesController: {fileID: 0}
+  _uiGame: {fileID: 0}
   _attackSounds:
   - {fileID: 8300000, guid: c9cf23efb0df9c24db9d4365b6cb16f7, type: 3}
   - {fileID: 8300000, guid: 486f8350a3e99a04ebae3feb6d0ef9a8, type: 3}

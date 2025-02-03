@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: SingleAttackConfig
   m_EditorClassIdentifier: 
   _stat:
-    _damage: 50
-    _attackSpeed: 1
-    _criticalChance: 5
-    _criticalDamage: 200
-    _bonusDamagePerLvl: 15
-    _bonusAttackSpeedPerLvl: -0.025
-    _bonusCriticalChancePerLvl: 3
-    _bonusCriticalDamagePerLvl: 5
+    _damage: 125
+    _attackSpeed: 1.1
+    _criticalChance: 15
+    _criticalDamage: 160
+    _bonusDamagePerLvl: 20
+    _bonusAttackSpeedPerLvl: -0.04
+    _bonusCriticalChancePerLvl: 7.5
+    _bonusCriticalDamagePerLvl: 25
   _price:
-    _damagePrice: 15
-    _attackSpeedPrice: 15
-    _criticalChancePrice: 15
-    _criticalDamagePrice: 15
-    _damagePricePerLvl: 15
+    _damagePrice: 25
+    _attackSpeedPrice: 20
+    _criticalChancePrice: 25
+    _criticalDamagePrice: 25
+    _damagePricePerLvl: 20
     _attackSpeedPricePerLvl: 15
-    _criticalChancePricePerLvl: 15
-    _criticalDamagePricePerLvl: 15
+    _criticalChancePricePerLvl: 20
+    _criticalDamagePricePerLvl: 20

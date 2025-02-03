@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Tank EnemyConfig
   m_EditorClassIdentifier: 
   _enemyStat:
-    _maxHealth: 100
-    _moveSpeed: 2
-    _damage: 30
-    _attackSpeed: 2
+    _maxHealth: 315
+    _moveSpeed: 1.5
+    _damage: 60
+    _attackSpeed: 1.3
     _attackRange: 1
-    _maxHealthBonusPerWave: 2
-    _moveSpeedBonusPerWave: 0.025
-    _damageBonusPerWave: 1
-    _attackSpeedBonusPerWave: -0.025
-    _attackRangeBonusPerWave: 0.025
+    _maxHealthBonusPerWave: 30
+    _moveSpeedBonusPerWave: 0.015
+    _damageBonusPerWave: 5
+    _attackSpeedBonusPerWave: -0.015
+    _attackRangeBonusPerWave: 0.03

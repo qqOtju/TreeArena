@@ -17,7 +17,7 @@ namespace Project.Scripts.GameLogic.Enemy
         [SerializeField] private Transform _visual;
         [SerializeField] private Color _color;
         [Title("Values")]
-        [ShowInInspector] private const float AnimationTime = 0.25f;
+        [ShowInInspector] private static readonly float AnimationTime = 0.25f;
     
         private const string TreeTag = "Tree";
         
@@ -29,6 +29,7 @@ namespace Project.Scripts.GameLogic.Enemy
         private float _animationTimer;
         private int _animationIndex;
         private Vector3 _targetPosition;
+        private IHealth<Tree> _treeHealth;
         
         public Color Color => _color;
         
@@ -51,21 +52,15 @@ namespace Project.Scripts.GameLogic.Enemy
         {
             _rb = GetComponent<Rigidbody2D>();
             _basicMovement = new BasicMovement(_rb);
-            var range = 0.5f;
         }
 
         private void Update()
         {
             CalculateMoveInput();
-            _attackTimer += Time.deltaTime;
-            if (_attackTimer >= _enemyStat.AttackSpeed)
-            {
-                TryToAttackTree();
-                _attackTimer = 0;
-            }
+            AttackCycle();
             AnimationCycle();
         }
-        
+
         private void FixedUpdate()
         {
             _basicMovement.Move(_moveInput, _enemyStat.MoveSpeed);
@@ -103,14 +98,27 @@ namespace Project.Scripts.GameLogic.Enemy
             _moveInput = (_targetPosition - transform.position).normalized;
         }
 
-        private void TryToAttackTree()
+        private void AttackCycle()
+        {
+            if(!IsNearbyTree()) return;
+            _attackTimer += Time.deltaTime;
+            if (_attackTimer >= _enemyStat.AttackSpeed)
+            {
+                Attack(_treeHealth);
+                _attackTimer = 0;
+            }
+        }
+        
+        private bool IsNearbyTree()
         {
             var hits = GetNearbyObjects(_enemyStat.AttackRange);
             foreach (var hit in hits)
-            {
                 if (hit.transform.CompareTag(TreeTag))
-                    Attack(hit.transform.GetComponent<IHealth<Tree>>());
-            }   
+                {
+                    _treeHealth = hit.transform.GetComponent<IHealth<Tree>>();
+                    return true;
+                }
+            return false;
         }
         
         private RaycastHit2D[] GetNearbyObjects(float range)

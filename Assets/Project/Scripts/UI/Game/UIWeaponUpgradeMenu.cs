@@ -115,10 +115,10 @@ namespace Project.Scripts.UI.Game
 
         private void UpdateSingleWeaponStats(SingleAttackStat singleAttackStat)
         {
-            _firstStatText.text = $"{singleAttackStat.Damage}";
-            _secondStatText.text = $"{singleAttackStat.AttackSpeed}";
-            _thirdStatText.text = $"{singleAttackStat.CriticalChance}";
-            _fourthStatText.text = $"{singleAttackStat.CriticalDamage}";
+            _firstStatText.text = $"{singleAttackStat.Damage:F0}";
+            _secondStatText.text = $"{singleAttackStat.AttackSpeed:F2}";
+            _thirdStatText.text = $"{singleAttackStat.CriticalChance:F0}";
+            _fourthStatText.text = $"{singleAttackStat.CriticalDamage:F0}";
             _firstStatIcon.sprite = _damageIcon;
             _secondStatIcon.sprite = _attackSpeedIcon;
             _thirdStatIcon.sprite = _criticalChanceIcon;
@@ -127,10 +127,10 @@ namespace Project.Scripts.UI.Game
         
         private void UpdateAoeWeaponStats(AoeAttackStat aoeAttackStat)
         {
-            _firstStatText.text = $"{aoeAttackStat.Damage}";
-            _secondStatText.text = $"{aoeAttackStat.AttackSpeed}";
-            _thirdStatText.text = $"{aoeAttackStat.Piercing}";
-            _fourthStatText.text = $"{aoeAttackStat.BulletCount}";
+            _firstStatText.text = $"{aoeAttackStat.Damage:F0}";
+            _secondStatText.text = $"{aoeAttackStat.AttackSpeed:F2}";
+            _thirdStatText.text = $"{aoeAttackStat.Piercing:F0}";
+            _fourthStatText.text = $"{aoeAttackStat.BulletCount:F0}";
             _firstStatIcon.sprite = _damageIcon;
             _secondStatIcon.sprite = _attackSpeedIcon;
             _thirdStatIcon.sprite = _piercingIcon;
@@ -170,19 +170,19 @@ namespace Project.Scripts.UI.Game
             var damageWithUpgrade = currentDamage + stat.BonusDamagePerLvl;
             var currentPrice = _weaponUpgradeSystem.CurrentSingleAttackPrice;
             _firstUpgrade.Initialize("Damage", 
-            $"{currentDamage}->{damageWithUpgrade}", $"{currentPrice.DamagePrice}", _damageIcon);
+            $"{currentDamage:F0}->{damageWithUpgrade:F0}", $"{currentPrice.DamagePrice}", _damageIcon, _weaponUpgradeSystem.SingleDamageLvl);
             var currentAttackSpeed = stat.AttackSpeed;
             var attackSpeedWithUpgrade = currentAttackSpeed + stat.BonusAttackSpeedPerLvl;
             _secondUpgrade.Initialize("Attack Speed",
-            $"{currentAttackSpeed}->{attackSpeedWithUpgrade}", $"{currentPrice.AttackSpeedPrice}", _attackSpeedIcon);
+            $"{currentAttackSpeed:F2}->{attackSpeedWithUpgrade:F2}", $"{currentPrice.AttackSpeedPrice}", _attackSpeedIcon, _weaponUpgradeSystem.SingleAttackSpeedLvl);
             var currentCriticalChance = stat.CriticalChance;
             var criticalChanceWithUpgrade = currentCriticalChance + stat.BonusCriticalChancePerLvl;
             _thirdUpgrade.Initialize("Critical Chance",
-            $"{currentCriticalChance}->{criticalChanceWithUpgrade}", $"{currentPrice.CriticalChancePrice}", _criticalChanceIcon);
+            $"{currentCriticalChance:F0}->{criticalChanceWithUpgrade:F0}", $"{currentPrice.CriticalChancePrice}", _criticalChanceIcon, _weaponUpgradeSystem.CriticalChanceLvl);
             var currentCriticalDamage = stat.CriticalDamage;
             var criticalDamageWithUpgrade = currentCriticalDamage + stat.BonusCriticalDamagePerLvl;
             _fourthUpgrade.Initialize("Critical Damage",
-            $"{currentCriticalDamage}->{criticalDamageWithUpgrade}", $"{currentPrice.CriticalDamagePrice}", _criticalDamageIcon);
+            $"{currentCriticalDamage:F0}->{criticalDamageWithUpgrade:F0}", $"{currentPrice.CriticalDamagePrice}", _criticalDamageIcon, _weaponUpgradeSystem.CriticalDamageLvl);
         }
         
         private void InitializeAoeWeaponUpgrades()
@@ -192,19 +192,19 @@ namespace Project.Scripts.UI.Game
             var damageWithUpgrade = currentDamage + stat.BonusDamagePerLvl;
             var currentPrice = _weaponUpgradeSystem.CurrentAoeAttackPrice;
             _firstUpgrade.Initialize("Damage", 
-            $"{currentDamage}->{damageWithUpgrade}", $"{currentPrice.DamagePrice}", _damageIcon);
+            $"{currentDamage:F0}->{damageWithUpgrade:F0}", $"{currentPrice.DamagePrice}", _damageIcon, _weaponUpgradeSystem.AoeDamageLvl);
             var currentAttackSpeed = stat.AttackSpeed;
             var attackSpeedWithUpgrade = currentAttackSpeed + stat.BonusAttackSpeedPerLvl;
-            _secondUpgrade.Initialize("Attack Speed",
-            $"{currentAttackSpeed}->{attackSpeedWithUpgrade}", $"{currentPrice.AttackSpeedPrice}", _attackSpeedIcon);
+            _secondUpgrade.Initialize("Fire Rate",
+            $"{currentAttackSpeed:F2}->{attackSpeedWithUpgrade:F2}", $"{currentPrice.AttackSpeedPrice}", _attackSpeedIcon, _weaponUpgradeSystem.AoeAttackSpeedLvl);
             var currentPiercing = stat.Piercing;
             var piercingWithUpgrade = currentPiercing + stat.BonusPiercingPerLvl;
             _thirdUpgrade.Initialize("Piercing",
-            $"{currentPiercing}->{piercingWithUpgrade}", $"{currentPrice.PiercingPrice}", _piercingIcon);
+            $"{currentPiercing:F0}->{piercingWithUpgrade:F0}", $"{currentPrice.PiercingPrice}", _piercingIcon, _weaponUpgradeSystem.PiercingLvl);
             var currentBulletCount = stat.BulletCount;
             var bulletCountWithUpgrade = currentBulletCount + stat.BonusBulletCountPerLvl;
             _fourthUpgrade.Initialize("Bullet Count",
-            $"{currentBulletCount}->{bulletCountWithUpgrade}", $"{currentPrice.BulletCountPrice}", _bulletCountIcon);
+            $"{currentBulletCount:F0}->{bulletCountWithUpgrade:F0}", $"{currentPrice.BulletCountPrice}", _bulletCountIcon, _weaponUpgradeSystem.BulletCountLvl);
         }
         
         private void UpgradeSingleDamage()

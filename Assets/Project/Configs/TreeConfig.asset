@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treeStat:
     _maxHealth: 1000
-    _regen: 5
-    _armor: 5
+    _regen: 4
+    _armor: 0
     _resistance: 5
-    _bonusMaxHealthPerLvl: 50
-    _bonusRegenPerLvl: 1
-    _bonusArmorPerLvl: 1
-    _bonusResistancePerLvl: 1
+    _bonusMaxHealthPerLvl: 100
+    _bonusRegenPerLvl: 5
+    _bonusArmorPerLvl: 3
+    _bonusResistancePerLvl: 4

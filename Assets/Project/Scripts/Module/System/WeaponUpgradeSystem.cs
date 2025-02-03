@@ -7,17 +7,17 @@ namespace Project.Scripts.Module.System
     {
         private readonly SingleAttackConfig _singleAttackConfig;
         private readonly AoeAttackConfig _aoeAttackConfig;
-        
-        private int _singleDamageLvl;
-        private int _singleAttackSpeedLvl;
-        private int _criticalChanceLvl;
-        private int _criticalDamageLvl;
-        
-        private int _aoeDamageLvl;
-        private int _aoeAttackSpeedLvl;
-        private int _piercingLvl;
-        private int _bulletCountLvl;
-        
+
+        public int SingleDamageLvl { get; private set; }
+        public int SingleAttackSpeedLvl { get; private set; }
+        public int CriticalChanceLvl { get; private set; }
+        public int CriticalDamageLvl { get; private set; }
+
+        public int AoeDamageLvl { get; private set; }
+        public int AoeAttackSpeedLvl { get; private set; }
+        public int PiercingLvl { get; private set; }
+        public int BulletCountLvl { get; private set; }
+
         public SingleAttackStat CurrentSingleAttackStat { get; private set; }
         public SingleAttackPrice CurrentSingleAttackPrice => GetSingleAttackPrice();
         public AoeAttackStat CurrentAoeAttackStat { get; private set; }
@@ -42,10 +42,10 @@ namespace Project.Scripts.Module.System
         private void SetSingleStats()
         {
             var singleAttackStat = _singleAttackConfig.Stat;
-            singleAttackStat.MultiplyDamageByLvl(_singleDamageLvl);
-            singleAttackStat.MultiplyAttackSpeedByLvl(_singleAttackSpeedLvl);
-            singleAttackStat.MultiplyCriticalChanceByLvl(_criticalChanceLvl);
-            singleAttackStat.MultiplyCriticalDamageByLvl(_criticalDamageLvl);
+            singleAttackStat.MultiplyDamageByLvl(SingleDamageLvl);
+            singleAttackStat.MultiplyAttackSpeedByLvl(SingleAttackSpeedLvl);
+            singleAttackStat.MultiplyCriticalChanceByLvl(CriticalChanceLvl);
+            singleAttackStat.MultiplyCriticalDamageByLvl(CriticalDamageLvl);
             CurrentSingleAttackStat = singleAttackStat;
             OnSingleAttackStatChanged?.Invoke(singleAttackStat);
         }
@@ -53,10 +53,10 @@ namespace Project.Scripts.Module.System
         private void SetAoeStats()
         {
             var aoeAttackStat = _aoeAttackConfig.Stat;
-            aoeAttackStat.MultiplyDamageByLvl(_aoeDamageLvl);
-            aoeAttackStat.MultiplyAttackSpeedByLvl(_aoeAttackSpeedLvl);
-            aoeAttackStat.MultiplyPiercingByLvl(_piercingLvl);
-            aoeAttackStat.MultiplyBulletCountByLvl(_bulletCountLvl);
+            aoeAttackStat.MultiplyDamageByLvl(AoeDamageLvl);
+            aoeAttackStat.MultiplyAttackSpeedByLvl(AoeAttackSpeedLvl);
+            aoeAttackStat.MultiplyPiercingByLvl(PiercingLvl);
+            aoeAttackStat.MultiplyBulletCountByLvl(BulletCountLvl);
             CurrentAoeAttackStat = aoeAttackStat;
             OnAoeAttackStatChanged?.Invoke(aoeAttackStat);
         }
@@ -64,68 +64,68 @@ namespace Project.Scripts.Module.System
         private SingleAttackPrice GetSingleAttackPrice()
         {
             var singleAttackPrice = _singleAttackConfig.Price;
-            singleAttackPrice.MultiplyDamagePriceByLvl(_singleDamageLvl);
-            singleAttackPrice.MultiplyAttackSpeedPriceByLvl(_singleAttackSpeedLvl);
-            singleAttackPrice.MultiplyCriticalChancePriceByLvl(_criticalChanceLvl);
-            singleAttackPrice.MultiplyCriticalDamagePriceByLvl(_criticalDamageLvl);
+            singleAttackPrice.MultiplyDamagePriceByLvl(SingleDamageLvl);
+            singleAttackPrice.MultiplyAttackSpeedPriceByLvl(SingleAttackSpeedLvl);
+            singleAttackPrice.MultiplyCriticalChancePriceByLvl(CriticalChanceLvl);
+            singleAttackPrice.MultiplyCriticalDamagePriceByLvl(CriticalDamageLvl);
             return singleAttackPrice;
         }
         
         private AoeAttackPrice GetAoeAttackPrice()
         {
             var aoeAttackPrice = _aoeAttackConfig.Price;
-            aoeAttackPrice.MultiplyDamagePriceByLvl(_aoeDamageLvl);
-            aoeAttackPrice.MultiplyAttackSpeedPriceByLvl(_aoeAttackSpeedLvl);
-            aoeAttackPrice.MultiplyPiercingPriceByLvl(_piercingLvl);
-            aoeAttackPrice.MultiplyBulletCountPriceByLvl(_bulletCountLvl);
+            aoeAttackPrice.MultiplyDamagePriceByLvl(AoeDamageLvl);
+            aoeAttackPrice.MultiplyAttackSpeedPriceByLvl(AoeAttackSpeedLvl);
+            aoeAttackPrice.MultiplyPiercingPriceByLvl(PiercingLvl);
+            aoeAttackPrice.MultiplyBulletCountPriceByLvl(BulletCountLvl);
             return aoeAttackPrice;
         }
         
         public void UpgradeSingleDamage()
         {
-            _singleDamageLvl++;
+            SingleDamageLvl++;
             SetSingleStats();
         }
         
         public void UpgradeSingleAttackSpeed()
         {
-            _singleAttackSpeedLvl++;
+            SingleAttackSpeedLvl++;
             SetSingleStats();
         }
         
         public void UpgradeCriticalChance()
         {
-            _criticalChanceLvl++;
+            CriticalChanceLvl++;
             SetSingleStats();
         }
         
         public void UpgradeCriticalDamage()
         {
-            _criticalDamageLvl++;
+            CriticalDamageLvl++;
             SetSingleStats();
         }
         
         public void UpgradeAoeDamage()
         {
-            _aoeDamageLvl++;
+            AoeDamageLvl++;
             SetAoeStats();
         }
         
         public void UpgradeAoeAttackSpeed()
         {
-            _aoeAttackSpeedLvl++;
+            AoeAttackSpeedLvl++;
             SetAoeStats();
         }
         
         public void UpgradePiercing()
         {
-            _piercingLvl++;
+            PiercingLvl++;
             SetAoeStats();
         }
         
         public void UpgradeBulletCount()
         {
-            _bulletCountLvl++;
+            BulletCountLvl++;
             SetAoeStats();
         }
     }

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Basic EnemyConfig
   m_EditorClassIdentifier: 
   _enemyStat:
-    _maxHealth: 50
-    _moveSpeed: 3
-    _damage: 20
-    _attackSpeed: 1
-    _attackRange: 0.5
-    _maxHealthBonusPerWave: 2
+    _maxHealth: 135
+    _moveSpeed: 2.6
+    _damage: 35
+    _attackSpeed: 0.9
+    _attackRange: 0.8
+    _maxHealthBonusPerWave: 15
     _moveSpeedBonusPerWave: 0.025
-    _damageBonusPerWave: 1
+    _damageBonusPerWave: 3
     _attackSpeedBonusPerWave: -0.025
     _attackRangeBonusPerWave: 0.025

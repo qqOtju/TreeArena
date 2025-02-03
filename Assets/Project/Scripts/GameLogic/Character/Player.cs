@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Project.Scripts.UI.Game;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Project.Scripts.GameLogic.Character
@@ -11,6 +12,7 @@ namespace Project.Scripts.GameLogic.Character
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Sprite[] _animationSprites;
         [SerializeField] private Transform _view;
+        [SerializeField] private UIJoystick _joystick;
         [Title("Values")]
         [ShowInInspector] private const float DefaultSpeed = 4f;
         [ShowInInspector] private const float AnimationTime = 0.25f;
@@ -31,8 +33,7 @@ namespace Project.Scripts.GameLogic.Character
 
         private void Update()
         {
-            _moveInput.x = Input.GetAxis("Horizontal");
-            _moveInput.y = Input.GetAxis("Vertical");
+            _moveInput = _joystick.GetInput();
             AnimationCycle();
         }
 

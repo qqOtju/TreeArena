@@ -15,16 +15,26 @@ MonoBehaviour:
   _spawns:
   - _spawnPoint: 0
     _enemyType: 0
-    _enemyCount: 6
-    _spawnDelay: 0.3
-    _waveDelay: 0
-  - _spawnPoint: 2
-    _enemyType: 0
-    _enemyCount: 6
-    _spawnDelay: 0.3
+    _enemyCount: 4
+    _spawnDelay: 0.2
     _waveDelay: 0
   - _spawnPoint: 4
     _enemyType: 0
+    _enemyCount: 4
+    _spawnDelay: 0.2
+    _waveDelay: 0
+  - _spawnPoint: 2
+    _enemyType: 1
     _enemyCount: 6
-    _spawnDelay: 0.3
+    _spawnDelay: 0.2
+    _waveDelay: 0
+  - _spawnPoint: 3
+    _enemyType: 1
+    _enemyCount: 4
+    _spawnDelay: 0.2
+    _waveDelay: 0
+  - _spawnPoint: 1
+    _enemyType: 1
+    _enemyCount: 4
+    _spawnDelay: 0.2
     _waveDelay: 0

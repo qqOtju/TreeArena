@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 4679467328391405410, guid: e51181bf7a816aa4f893603188c2f361, type: 3}
   - {fileID: -2473927628621297612, guid: e51181bf7a816aa4f893603188c2f361, type: 3}
   _view: {fileID: 907907260882409878}
+  _joystick: {fileID: 0}
 --- !u!70 &5983863277435388130
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1604,8 +1605,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1723,7 +1724,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

@@ -13,6 +13,8 @@ namespace Project.Scripts.Module.Factory
         private readonly CoinConfig _coinConfig;
         private readonly DiContainer _diContainer;
         
+        private int _currentWaveIndex;
+        
         public CoinFactory(Coin prefab, Transform container, 
             CoinConfig config, DiContainer diContainer) : base(prefab, container)
         {
@@ -24,7 +26,7 @@ namespace Project.Scripts.Module.Factory
         public override Coin Create()
         {
             var coin = Pool.Get();
-            coin.Initialize(_coinConfig.CoinStat);
+            coin.Initialize(_coinConfig.CoinStat, _currentWaveIndex);
             _diContainer.Inject(coin);
             coin.OnPlayerHit += Release;
             return coin;
@@ -34,6 +36,11 @@ namespace Project.Scripts.Module.Factory
         {
             obj.OnPlayerHit -= Release;
             Pool.Release(obj);
+        }
+        
+        public void SetWaveIndex(int waveIndex)
+        {
+            _currentWaveIndex = waveIndex+1;
         }
     }
 }

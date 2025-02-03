@@ -26,9 +26,10 @@ namespace Project.Scripts.GameLogic.Dropdown
             _coinSystem = coinSystem;
         }
         
-        public void Initialize(CoinStat config)
+        public void Initialize(CoinStat config, int wave)
         {
             _pickupRange = config.PickupRange;
+            config.MultiplyByWave(wave);
             _value = config.Value;
         }
         

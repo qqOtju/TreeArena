@@ -14,7 +14,6 @@ namespace Project.Scripts.UI.Game
         [SerializeField] private Button _exitButton;
         
         private AudioController _audioController;
-        private CanvasGroup _canvasGroup;
         private Canvas _pauseMenu;
 
         [Inject]
@@ -26,7 +25,6 @@ namespace Project.Scripts.UI.Game
         private void Awake()
         {
             _pauseMenu = GetComponent<Canvas>();
-            _canvasGroup = GetComponent<CanvasGroup>();
             _resumeButton.onClick.AddListener(Resume);
             _returnToMenuButton.onClick.AddListener(ReturnToMenu);
             _exitButton.onClick.AddListener(Exit);
@@ -44,7 +42,7 @@ namespace Project.Scripts.UI.Game
             _audioController.PlayButtonClick();
             _audioController.StopMusic();
             Time.timeScale = 1;
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 
         private void Exit()
