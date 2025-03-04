@@ -211,7 +211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 2047477887, guid: 7f8f1c70186e75f4cbced076d7477a24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2047477887, guid: 7f8f1c70186e75f4cbced076d7477a24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 2047477887, guid: 7f8f1c70186e75f4cbced076d7477a24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 2047477887, guid: 7f8f1c70186e75f4cbced076d7477a24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1640,7 +1640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024138509453938495, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8359022981687623719, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_Pivot.x
@@ -1768,7 +1768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024138509453938495, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8359022981687623719, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_Pivot.x
@@ -1896,7 +1896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024138509453938495, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8359022981687623719, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_Pivot.x
@@ -2024,7 +2024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024138509453938495, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8359022981687623719, guid: a370d8b6cc9170346ba52012d184ae76, type: 3}
       propertyPath: m_Pivot.x

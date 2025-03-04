@@ -191,7 +191,6 @@ namespace Project.Scripts.GameLogic.Character
                     _animationIndex++;
                 else
                     _animationIndex--;
-                Debug.Log($"Animation index: {_animationIndex}");
                 if (_animationIndex >= _animationSprites.Length - 1)
                     _animationDirection = false;
                 else if (_animationIndex <= 0)

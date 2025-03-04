@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stat:
     _damage: 125
-    _attackSpeed: 1.1
+    _attackSpeed: 0.95
     _criticalChance: 15
     _criticalDamage: 160
     _bonusDamagePerLvl: 20
     _bonusAttackSpeedPerLvl: -0.04
     _bonusCriticalChancePerLvl: 7.5
-    _bonusCriticalDamagePerLvl: 25
+    _bonusCriticalDamagePerLvl: 30
   _price:
     _damagePrice: 25
     _attackSpeedPrice: 20
     _criticalChancePrice: 25
     _criticalDamagePrice: 25
-    _damagePricePerLvl: 20
-    _attackSpeedPricePerLvl: 15
-    _criticalChancePricePerLvl: 20
+    _damagePricePerLvl: 22
+    _attackSpeedPricePerLvl: 16
+    _criticalChancePricePerLvl: 22
     _criticalDamagePricePerLvl: 20

@@ -22,12 +22,13 @@ namespace Project.Scripts.GameLogic.Character.Attack
             _bulletFactory.SetActions(OnHealthHit, OnWallHit, BulletMoveForward, 
                 _muzzle, _aoeAttackStat.Piercing);
             var angle = 7f;
-            var bulletCount = (int)(_aoeAttackStat.BulletCount / 2);
-            for (int i = -bulletCount; i <= bulletCount; i++)
+            var bulletCount = _aoeAttackStat.BulletCount;
+            var startAngle = _muzzle.localRotation.eulerAngles.z - angle * bulletCount / 2;
+            for (int i = 0; i < bulletCount; i++)
             {
                 var bullet = _bulletFactory.Create();
                 bullet.transform.rotation = Quaternion.Euler(
-                    new Vector3(0,0, _muzzle.localRotation.eulerAngles.z + i * angle));
+                    new Vector3(0,0, startAngle + i * angle));
             }
             RaiseOnAttack();
         }

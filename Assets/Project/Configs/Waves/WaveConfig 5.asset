@@ -25,21 +25,21 @@ MonoBehaviour:
     _waveDelay: 0
   - _spawnPoint: 2
     _enemyType: 0
-    _enemyCount: 5
+    _enemyCount: 4
     _spawnDelay: 0
     _waveDelay: 0
   - _spawnPoint: 2
     _enemyType: 2
-    _enemyCount: 2
-    _spawnDelay: 0
-    _waveDelay: 2
+    _enemyCount: 1
+    _spawnDelay: 1
+    _waveDelay: 2.5
   - _spawnPoint: 3
     _enemyType: 2
-    _enemyCount: 1
+    _enemyCount: 2
     _spawnDelay: 0
-    _waveDelay: 2
+    _waveDelay: 2.5
   - _spawnPoint: 1
     _enemyType: 2
-    _enemyCount: 1
+    _enemyCount: 2
     _spawnDelay: 0
-    _waveDelay: 2
+    _waveDelay: 2.5

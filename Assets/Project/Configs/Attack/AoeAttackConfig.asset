@@ -18,7 +18,7 @@ MonoBehaviour:
     _piercing: 0
     _bulletCount: 4
     _bonusDamagePerLvl: 8
-    _bonusAttackSpeedPerLvl: -0.025
+    _bonusAttackSpeedPerLvl: -0.03
     _bonusPiercingPerLvl: 1
     _bonusBulletCountPerLvl: 1
   _price:
@@ -26,7 +26,7 @@ MonoBehaviour:
     _attackSpeedPrice: 25
     _piercingPrice: 50
     _bulletCountPrice: 50
-    _damagePricePerLvl: 25
-    _attackSpeedPricePerLvl: 20
-    _piercingPricePerLvl: 40
+    _damagePricePerLvl: 26
+    _attackSpeedPricePerLvl: 22
+    _piercingPricePerLvl: 42
     _bulletCountPricePerLvl: 40
