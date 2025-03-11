@@ -6251,11 +6251,11 @@ MonoBehaviour:
   _damageEffect: {fileID: 7571904538289782164, guid: db510827a20f66141b022ec8beb19cdd, type: 3}
   _dealDamageEffect: {fileID: 7571904538289782164, guid: aef4f69b659a34d479f363ff0534dd8b, type: 3}
   _damageSounds:
-  - {fileID: 8300000, guid: d1aa9598997c6ce4c89cee9cdfa46caa, type: 3}
-  - {fileID: 8300000, guid: 903a467b70da2414d806b6914fb3c4d7, type: 3}
-  - {fileID: 8300000, guid: 19776318dcd5e8045af278c93d875a14, type: 3}
-  - {fileID: 8300000, guid: 14a18cb9a5f2f494586b62adc180edf8, type: 3}
-  - {fileID: 8300000, guid: 463fc5f1b1c78224081bb4d2a18a3db2, type: 3}
+  - {fileID: 8300000, guid: 4b7e045fd99e6264c9db761697853ebf, type: 3}
+  - {fileID: 8300000, guid: 6d97eab05e64b0347aaff57b388a8440, type: 3}
+  - {fileID: 8300000, guid: c9926d1046deea744998c3471526b8d1, type: 3}
+  - {fileID: 8300000, guid: 3088f092200fd3e40bb56c33cde2b957, type: 3}
+  - {fileID: 8300000, guid: c50ef78e26305ea43b33af6c71896c38, type: 3}
   _enemySpawner: {fileID: 801006590}
 --- !u!1001 &554568607
 PrefabInstance:
@@ -24470,7 +24470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pickUpEffect: {fileID: 7571904538289782164, guid: 66c7f314c725720469574e7797e73894, type: 3}
   _pickUpSounds:
-  - {fileID: 8300000, guid: 3d45f10633ecfba4286e029b9b2051dc, type: 3}
+  - {fileID: 8300000, guid: 956f1882e8986f848b1bbf64fa79949f, type: 3}
   _coinSpawner: {fileID: 1193577478}
 --- !u!70 &2012463339 stripped
 CapsuleCollider2D:

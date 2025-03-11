@@ -33,7 +33,11 @@ namespace Project.Scripts.GameLogic.Character
 
         private void Update()
         {
+#if UNITY_ANDROID
             _moveInput = _joystick.GetInput();
+#else 
+            _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+#endif
             AnimationCycle();
         }
 

@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Audio;
+﻿using System;
+using Project.Scripts.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,6 +29,13 @@ namespace Project.Scripts.UI.Game
             _resumeButton.onClick.AddListener(Resume);
             _returnToMenuButton.onClick.AddListener(ReturnToMenu);
             _exitButton.onClick.AddListener(Exit);
+        }
+
+        private void OnDestroy()
+        {
+            _resumeButton.onClick.RemoveAllListeners();
+            _returnToMenuButton.onClick.RemoveAllListeners();
+            _exitButton.onClick.RemoveAllListeners();
         }
 
         private void Resume()

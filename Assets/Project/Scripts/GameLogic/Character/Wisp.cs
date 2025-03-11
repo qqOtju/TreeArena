@@ -102,6 +102,10 @@ namespace Project.Scripts.GameLogic.Character
                 _visual.localScale = new Vector3(1, 1, 1);
             else if(_moveDirection.x < 0)
                 _visual.localScale = new Vector3(-1, 1, 1);
+            if(Input.GetKeyDown(KeyCode.Z))
+                SetAoeAttack();
+            if(Input.GetKeyDown(KeyCode.X))
+                SetSingleAttack();
             AnimationCycle();
         }
 
