@@ -3,6 +3,7 @@
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 /Screenshots/
+/Recordings
 /Key
 /Secret
 /Assets/Firebase
