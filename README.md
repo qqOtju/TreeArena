@@ -4,7 +4,7 @@ Tree Arena — is a simple roguelite game in which you will protect the tree fro
 
 ## Скриншоти
 
-![1](screenshot1.png)
+![1](Screenshot/screenshot1.png)
 
 ![Main Screenshot](Screenshot/screenshot7.png)
 
