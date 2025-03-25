@@ -2,9 +2,9 @@
 
 Tree Arena — is a simple roguelite game in which you will protect the tree from waves of enemies.
 
-## Скриншоти
+## Screenshots
 
-![GIF](ezgif-5ee553a1c372d1.gif)
+![GIF](Screenshot/ezgif-521211561cce71.gif)
 
 ![1](Screenshot/screenshot1.png)
 
