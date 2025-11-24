@@ -33,7 +33,7 @@ namespace Project.Scripts.GameLogic.Character
 
         private void Update()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID ||  UNITY_IOS
             _moveInput = _joystick.GetInput();
 #else 
             _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
